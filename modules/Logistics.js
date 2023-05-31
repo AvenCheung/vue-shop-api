@@ -2,9 +2,9 @@
 const request = require('request')
 
 // 自动匹配运单号所属的物流公司
-function autoComNumber(orderno) {
+function autoComNumber (orderno) {
   const url = `https://www.kuaidi100.com/autonumber/autoComNum?resultv2=1&text=${orderno}`
-  return new Promise(function(resolve, reject) {
+  return new Promise(function (resolve, reject) {
     request(url, (err, response, body) => {
       if (err) return reject({ status: 500, msg: err.message })
       // resolve(body)
@@ -16,8 +16,8 @@ function autoComNumber(orderno) {
   })
 }
 
-async function getLogisticsInfo(req, res) {
-  const result = await autoComNumber(req.params.orderno)
+async function getLogisticsInfo (req, res) {
+  const result = await autoComNumber(req.params.order + no)
 
   if (result.status !== 200) {
     return {
